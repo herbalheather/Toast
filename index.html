@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TOAST! 🍞 The Only AI Site Trusted</title>
+<meta name="description" content="Learn to use any AI — Claude, ChatGPT, Grok, Gemini, Mistral and more. Free guides, copy-paste prompts, beginner tutorials. For ages 10–70. Built by Heather in Texas.">
+<meta property="og:title" content="TOAST! 🍞 The Only AI Site Trusted">
+<meta property="og:description" content="Escape the AI farmland. Learn to use any AI with kindness and real prompts. Free forever.">
+<meta property="og:image" content="toast-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TOAST! 🍞 The Only AI Site Trusted">
+<meta name="twitter:image" content="toast-hero.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🍞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════ TOKENS ══════════════ */
+:root{
+  --bg:#fff8ee;--bg2:#fff0d0;--bg3:#ffe8a8;
+  --surface:#ffffff;--surface2:#fffcf5;
+  --ink:#1a1000;--ink2:#3d2800;--ink3:#7a5a10;--ink4:#b89030;
+  --toast:#e8720c;--toast2:#ff9332;--toast-soft:#fff0e0;
+  --butter:#f5c010;--butter2:#fde060;
+  --jam:#c0392b;--jam-soft:#fdecea;
+  --sage:#2e7d3a;--sage-soft:#e6f4e8;
+  --astro:#4a1aff;--astro-soft:#ede8ff;
+  --line:rgba(180,100,0,.12);--line2:rgba(180,100,0,.22);
+  --sh:rgba(200,100,0,.1);--sh2:rgba(200,100,0,.22);
+  --r:16px;--r2:24px;
+}
+[data-theme="dark"]{
+  --bg:#120c00;--bg2:#1e1400;--bg3:#2a1c00;
+  --surface:#201400;--surface2:#281c00;
+  --ink:#fff5cc;--ink2:#f0d880;--ink3:#c09030;--ink4:#806010;
+  --toast:#ff9332;--toast2:#ffb060;--toast-soft:#2a1200;
+  --butter:#e8b000;--butter2:#c09000;
+  --jam:#e05545;--jam-soft:#280808;
+  --sage:#5ab864;--sage-soft:#0a2010;
+  --astro:#8060ff;--astro-soft:#1a1040;
+  --line:rgba(255,180,40,.09);--line2:rgba(255,180,40,.17);
+  --sh:rgba(0,0,0,.4);--sh2:rgba(0,0,0,.6);
+}
+
+/* ══════════════ RESET ══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Nunito',sans-serif;
+  font-size:16px;line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .3s,color .3s;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+
+/* ══════════════ CRUMBS ══════════════ */
+.crumbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.crumb{
+  position:absolute;font-size:1.6rem;opacity:.45;
+  animation:cfloat linear infinite;will-change:transform;
+}
+@keyframes cfloat{
+  0%{transform:translateY(-80px) rotate(0deg);opacity:.45}
+  100%{transform:translateY(110vh) rotate(540deg);opacity:0}
+}
+@media(max-width:640px){.crumb{display:none}}
+@media(prefers-reduced-motion:reduce){.crumb{animation:none!important}}
+
+/* ══════════════ SKIP LINK ══════════════ */
+.skip{
+  position:absolute;left:-9999px;top:4px;
+  background:var(--ink);color:var(--bg);
+  padding:8px 16px;border-radius:4px;
+  font-size:13px;font-weight:800;z-index:9999;
+}
+.skip:focus{left:4px}
+
+/* ══════════════ HEADER ══════════════ */
+.hdr{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,248,238,.95);
+  backdrop-filter:blur(14px);
+  border-bottom:2px solid var(--line);
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1rem;
+  transition:background .3s;
+}
+[data-theme="dark"] .hdr{background:rgba(18,12,0,.95)}
+.logo{
+  font-family:'Fredoka One',cursive;
+  font-size:24px;color:var(--toast);
+  display:flex;align-items:center;gap:5px;
+  letter-spacing:.5px;
+}
+.hdr-nav{display:flex;align-items:center;gap:4px}
+.hdr-nav a{
+  font-size:13px;font-weight:800;
+  color:var(--ink3);
+  padding:6px 10px;border-radius:8px;
+  white-space:nowrap;
+  transition:background .12s,color .12s;
+}
+.hdr-nav a:hover{background:var(--bg2);color:var(--toast)}
+.tbtn{
+  width:42px;height:26px;
+  background:var(--bg3);border:1.5px solid var(--line2);
+  border-radius:13px;position:relative;
+  transition:background .25s;flex-shrink:0;
+}
+.tbtn::after{
+  content:'';position:absolute;
+  top:3px;left:3px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--toast);
+  transition:transform .25s;
+}
+[data-theme="dark"] .tbtn::after{transform:translateX(16px)}
+.hambtn{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;padding:6px;
+}
+.hambtn span{display:block;width:22px;height:2px;background:var(--ink3);border-radius:2px;transition:transform .25s,opacity .25s}
+.hambtn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hambtn.open span:nth-child(2){opacity:0}
+.hambtn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){
+  .hdr-nav>a{display:none}
+  .hambtn{display:flex}
+}
+.mobmenu{
+  display:none;position:fixed;
+  top:56px;left:0;right:0;z-index:99;
+  background:var(--surface);
+  border-bottom:2px solid var(--line);
+  flex-direction:column;
+  padding:.75rem 1rem 1.25rem;gap:2px;
+  box-shadow:0 8px 32px var(--sh2);
+  animation:smenu .2s ease;
+}
+.mobmenu.open{display:flex}
+@keyframes smenu{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mobmenu a{
+  font-size:15px;font-weight:800;color:var(--ink2);
+  padding:12px 14px;border-radius:10px;
+  border-bottom:1px solid var(--line);
+  transition:background .1s;
+}
+.mobmenu a:last-child{border-bottom:none}
+.mobmenu a:hover{background:var(--bg2)}
+.mobmenu .mob-cta{
+  background:var(--toast);color:#fff;
+  border-radius:10px;border-bottom:none;
+  margin-top:6px;text-align:center;
+  font-family:'Fredoka One',cursive;font-size:16px;
+}
+
+/* ══════════════ REVEAL ══════════════ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* ══════════════ LAYOUT ══════════════ */
+.w{max-width:800px;margin:0 auto;padding:0 1rem;position:relative;z-index:1}
+section{padding:2.5rem 0}
+
+/* ══════════════ BUTTONS ══════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'Fredoka One',cursive;
+  font-size:17px;letter-spacing:.4px;
+  padding:14px 28px;border-radius:50px;
+  border:none;cursor:pointer;
+  transition:transform .12s,box-shadow .12s,opacity .12s;
+  text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(.96)!important}
+.btn-toast{background:var(--toast);color:#fff;box-shadow:0 6px 20px var(--sh2)}
+.btn-toast:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 28px var(--sh2)}
+.btn-butter{background:var(--butter);color:var(--ink2);box-shadow:0 4px 14px var(--sh)}
+.btn-butter:hover{transform:translateY(-2px) scale(1.02)}
+.btn-astro{background:var(--astro);color:#fff;box-shadow:0 6px 20px rgba(74,26,255,.3)}
+.btn-astro:hover{transform:translateY(-2px) scale(1.02)}
+.btn-sage{background:var(--sage);color:#fff;box-shadow:0 4px 14px rgba(46,125,58,.25)}
+.btn-sage:hover{transform:translateY(-2px) scale(1.02)}
+@media(max-width:480px){
+  .btn{font-size:16px;padding:13px 22px;min-height:52px}
+}
+
+/* ══════════════ HERO ══════════════ */
+.hero-deco{
+  position:absolute;inset:0;z-index:0;
+  pointer-events:none;
+}
+.hero-deco span{
+  position:absolute;
+  animation:hdeco 4s ease-in-out infinite;
+  opacity:.7;
+  display:block;
+}
+@keyframes hdeco{
+  0%,100%{transform:translateY(0) rotate(-5deg)}
+  50%{transform:translateY(-12px) rotate(5deg)}
+}
+@media(prefers-reduced-motion:reduce){.hero-deco span{animation:none}}
+.hero{
+  position:relative;z-index:1;
+  overflow:hidden;
+}
+.hero-img-wrap{
+  width:100%;
+  min-height:480px;
+  max-height:560px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(135deg,#ff9332 0%,#e8720c 30%,#c85000 60%,#8b2500 100%);
+  display:flex;align-items:flex-end;
+}
+@media(max-width:640px){.hero-img-wrap{min-height:360px;max-height:440px}}
+.hero-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  display:block;
+  position:absolute;inset:0;
+}
+.hero-img-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(10,4,0,.75) 100%);
+  z-index:1;
+}
+.hero-over{
+  position:relative;z-index:2;
+  width:100%;
+  padding:3rem 1.25rem 2.75rem;
+  text-align:center;
+}
+.hero-title{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(54px,14vw,100px);
+  line-height:.9;
+  color:#fff;
+  text-shadow:3px 3px 0 rgba(0,0,0,.3),0 0 40px rgba(255,160,0,.6);
+  letter-spacing:3px;
+  margin-bottom:.4rem;
+}
+.hero-sub{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(15px,3.5vw,22px);
+  color:#ffe8b0;
+  letter-spacing:.3px;
+  margin-bottom:1.25rem;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+@media(max-width:480px){
+  .hero-btns .btn{width:100%;justify-content:center}
+}
+
+/* ══════════════ STREAK ══════════════ */
+.streak{
+  background:var(--toast-soft);
+  border:2px solid rgba(232,114,12,.2);
+  border-radius:var(--r2);
+  padding:1rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.75rem;
+  margin-bottom:2rem;
+}
+.streak-num{font-family:'Fredoka One',cursive;font-size:40px;color:var(--toast);line-height:1}
+.streak-info{font-size:13px;font-weight:700;color:var(--ink3)}
+
+/* ══════════════ SECTION TITLES ══════════════ */
+.st{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(26px,5.5vw,40px);
+  color:var(--toast);letter-spacing:.4px;
+  margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.ruled{
+  display:flex;align-items:center;gap:12px;
+  margin:2.75rem 0;
+  font-family:'Fredoka One',cursive;
+  font-size:15px;color:var(--ink4);
+}
+.ruled::before,.ruled::after{content:'';flex:1;height:2px;background:linear-gradient(to right,transparent,var(--line),transparent)}
+
+/* ══════════════ PHOTO SECTIONS ══════════════ */
+.photo-feature{
+  border-radius:var(--r2);
+  overflow:hidden;
+  box-shadow:0 8px 32px var(--sh2);
+  margin-bottom:1.5rem;
+  position:relative;
+  min-height:200px;
+  background:linear-gradient(135deg,#ff9332 0%,#e8720c 50%,#c85000 100%);
+  display:flex;align-items:flex-end;
+}
+.photo-feature img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  position:absolute;inset:0;
+  transition:transform .5s ease;
+}
+.photo-feature:hover img{transform:scale(1.02)}
+.photo-cap{
+  position:relative;z-index:2;
+  width:100%;
+  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.2) 60%,transparent 100%);
+  color:#fff;
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(16px,3.5vw,22px);
+  padding:3rem 1.25rem 1rem;
+  letter-spacing:.3px;
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+/* gallery grid */
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+@media(max-width:440px){.gallery{grid-template-columns:1fr}}
+.gallery-img{
+  border-radius:var(--r);
+  overflow:hidden;
+  aspect-ratio:1;
+  box-shadow:0 4px 16px var(--sh);
+}
+.gallery-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .4s ease;
+}
+.gallery-img:hover img{transform:scale(1.05)}
+
+/* ══════════════ HOW-TO STEPS ══════════════ */
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{
+  background:var(--surface);
+  border:2px solid var(--line2);
+  border-radius:var(--r2);
+  padding:1.25rem 1.35rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  box-shadow:0 3px 14px var(--sh);
+  transition:transform .15s,box-shadow .15s;
+}
+.step:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--sh2)}
+.step-num{
+  width:46px;height:46px;flex-shrink:0;
+  background:var(--toast);
+  color:#fff;border-radius:14px;
+  font-family:'Fredoka One',cursive;
+  font-size:20px;font-weight:400;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 10px var(--sh2);
+  letter-spacing:0;
+}
+.step-content{}
+.step-title{font-size:17px;font-weight:900;color:var(--ink);margin-bottom:.3rem}
+.step-body{font-size:14px;font-weight:600;color:var(--ink3);line-height:1.65}
+.step-tip{
+  margin-top:.6rem;
+  background:var(--bg2);border-radius:8px;
+  padding:.5rem .8rem;
+  font-size:13px;font-weight:700;color:var(--ink2);
+}
+
+/* ══════════════ AI CARDS ══════════════ */
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+@media(max-width:580px){.ai-grid{grid-template-columns:1fr}}
+.ai-card{
+  background:var(--surface);
+  border:2px solid var(--line2);
+  border-radius:var(--r2);
+  padding:1.4rem;
+  box-shadow:0 4px 16px var(--sh);
+  transition:transform .15s,box-shadow .15s;
+}
+.ai-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px var(--sh2)}
+.ai-card.me{border-color:var(--toast);border-width:3px}
+.ai-name{font-family:'Fredoka One',cursive;font-size:22px;color:var(--ink);margin-bottom:.2rem}
+.ai-vibe{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:var(--toast);margin-bottom:.6rem}
+.ai-desc{font-size:13.5px;font-weight:600;color:var(--ink3);line-height:1.65;margin-bottom:.9rem}
+.ai-tip{background:var(--bg2);border-radius:10px;padding:.6rem .9rem;font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:.9rem}
+.ai-cta{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:900;
+  color:var(--toast);
+  padding:7px 16px;
+  border:2px solid var(--toast);border-radius:20px;
+  transition:background .12s,color .12s;
+}
+.ai-cta:hover{background:var(--toast);color:#fff}
+
+/* ══════════════ PROMPTS ══════════════ */
+.prompt-section-label{
+  font-family:'Fredoka One',cursive;
+  font-size:20px;color:var(--ink2);
+  margin:1.5rem 0 .75rem;
+  display:flex;align-items:center;gap:8px;
+}
+.pcard{
+  background:var(--surface);
+  border:2px solid var(--line2);
+  border-radius:var(--r2);
+  padding:1.4rem;
+  margin-bottom:12px;
+  box-shadow:0 3px 12px var(--sh);
+}
+.plabel{
+  font-size:14px;font-weight:900;color:var(--ink3);
+  margin-bottom:.6rem;
+  display:flex;align-items:center;gap:6px;
+}
+.pbox{
+  background:var(--bg2);
+  border:2px dashed var(--line2);
+  border-radius:12px;
+  padding:.9rem 1rem;
+  font-size:14px;font-weight:700;color:var(--ink2);
+  line-height:1.7;margin-bottom:.85rem;
+  white-space:pre-wrap;word-break:break-word;
+}
+.copybtn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--toast);color:#fff;
+  font-family:'Fredoka One',cursive;
+  font-size:14px;letter-spacing:.3px;
+  padding:9px 18px;border-radius:20px;
+  border:none;cursor:pointer;
+  transition:transform .1s,background .12s;
+  -webkit-tap-highlight-color:transparent;
+  min-height:44px;
+}
+.copybtn:hover{transform:scale(1.04)}
+.copybtn.copied{background:var(--sage)}
+
+/* ══════════════ ETHICS ══════════════ */
+.ethics-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.ethics-grid{grid-template-columns:1fr}}
+.ec{border-radius:var(--r);padding:1.1rem 1.2rem}
+.ec.g{background:var(--sage-soft);border:2px solid rgba(46,125,58,.2)}
+.ec.b{background:var(--jam-soft);border:2px solid rgba(192,57,43,.18)}
+.ec-lbl{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.ec.g .ec-lbl{color:var(--sage)}
+.ec.b .ec-lbl{color:var(--jam)}
+.ec-text{font-size:14px;font-weight:700;color:var(--ink2);line-height:1.6}
+
+/* ══════════════ MISSIONS ══════════════ */
+.mbox{background:var(--surface);border:2px solid var(--line2);border-radius:var(--r2);overflow:hidden;box-shadow:0 4px 16px var(--sh)}
+.mhead{padding:1rem 1.25rem;border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.mhead-label{font-family:'Fredoka One',cursive;font-size:17px;color:var(--ink2)}
+.mpct{font-size:14px;font-weight:900;color:var(--sage)}
+.mbar{height:5px;background:var(--bg3)}
+.mfill{height:100%;background:var(--sage);transition:width .4s ease;border-radius:2px}
+.mitem{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;user-select:none;
+  transition:background .1s;
+  min-height:56px;
+}
+.mitem:last-of-type{border-bottom:none}
+.mitem:hover{background:var(--bg)}
+.mcb{
+  width:22px;height:22px;flex-shrink:0;margin-top:2px;
+  border:2px solid var(--line2);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:#fff;
+  transition:background .15s,border-color .15s;
+}
+.mitem.done .mcb{background:var(--sage);border-color:var(--sage)}
+.mitem.done .mtext{text-decoration:line-through;color:var(--ink4)}
+.mtext{font-size:15px;font-weight:700;color:var(--ink2);line-height:1.55}
+.mfoot{padding:10px 18px;border-top:1px solid var(--line)}
+.mreset{
+  font-size:13px;font-weight:800;color:var(--ink3);
+  background:var(--bg);border:1.5px solid var(--line2);
+  border-radius:10px;padding:7px 16px;
+  min-height:44px;
+}
+.mreset:hover{background:var(--bg2)}
+
+/* ══════════════ NETWORK CARDS ══════════════ */
+.network{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+@media(max-width:480px){.network{grid-template-columns:1fr}}
+.ncard{
+  background:var(--surface);
+  border:2px solid var(--line2);
+  border-radius:var(--r2);
+  padding:1.35rem;
+  box-shadow:0 4px 14px var(--sh);
+  transition:transform .15s,box-shadow .15s;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.ncard:hover{transform:translateY(-3px);box-shadow:0 10px 26px var(--sh2)}
+.ncard-icon{font-size:32px}
+.ncard-name{font-family:'Fredoka One',cursive;font-size:18px;color:var(--ink)}
+.ncard-desc{font-size:13px;font-weight:600;color:var(--ink3);line-height:1.6;flex:1}
+.ncard-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:900;color:var(--toast);
+  padding:7px 14px;border:2px solid var(--toast);border-radius:16px;
+  align-self:flex-start;
+  transition:background .12s,color .12s;
+  min-height:40px;
+}
+.ncard-link:hover{background:var(--toast);color:#fff}
+.ncard.astro{border-color:var(--astro);border-width:3px}
+.ncard.astro .ncard-name{color:var(--astro)}
+.ncard.astro .ncard-link{color:var(--astro);border-color:var(--astro)}
+.ncard.astro .ncard-link:hover{background:var(--astro);color:#fff}
+
+/* ══════════════ DONATE ══════════════ */
+.donate{
+  background:var(--sage-soft);
+  border:2px solid rgba(46,125,58,.2);
+  border-radius:var(--r2);
+  padding:2rem;text-align:center;
+}
+.dbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:1.1rem}
+.dbtn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:14px;font-weight:800;
+  padding:11px 20px;border-radius:20px;
+  background:var(--surface);border:2px solid rgba(46,125,58,.22);
+  color:var(--ink);transition:background .12s,transform .1s;
+  min-height:46px;
+}
+.dbtn:hover{background:var(--bg3);transform:translateY(-1px)}
+
+/* ══════════════ FOOTER ══════════════ */
+footer{
+  max-width:800px;margin:0 auto;
+  padding:2.5rem 1rem 3rem;
+  border-top:2px solid var(--line);
+  text-align:center;position:relative;z-index:1;
+}
+.ftitle{font-family:'Fredoka One',cursive;font-size:26px;color:var(--toast);margin-bottom:.5rem}
+.flinks{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:1rem}
+.flinks a{font-size:13px;font-weight:800;color:var(--ink4);transition:color .1s}
+.flinks a:hover{color:var(--toast)}
+.fshare{
+  background:#000;color:#fff;
+  font-family:'Fredoka One',cursive;
+  font-size:16px;letter-spacing:.4px;
+  padding:12px 26px;border-radius:50px;
+  border:none;cursor:pointer;
+  margin-bottom:1rem;
+  transition:transform .12s,opacity .12s;
+  min-height:48px;
+}
+.fshare:hover{transform:scale(1.05)}
+.ftag{font-size:13px;font-weight:600;color:var(--ink3)}
+
+/* ══════════════ BTT ══════════════ */
+#btt{
+  display:none;position:fixed;
+  bottom:env(safe-area-inset-bottom,16px);
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  right:16px;z-index:90;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--toast);color:#fff;
+  font-size:20px;border:none;cursor:pointer;
+  box-shadow:0 4px 18px var(--sh2);
+  align-items:center;justify-content:center;
+  transition:opacity .2s,transform .15s;
+  min-height:48px;
+}
+#btt:hover{transform:scale(1.1)}
+
+/* ══════════════ CONFETTI ══════════════ */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:9999}
+</style>
+</head>
+<body>
+
+<!-- SKIP -->
+<a href="#main" class="skip">skip to content</a>
+
+<!-- CRUMBS -->
+<div class="crumbs" aria-hidden="true">
+  <span class="crumb" style="left:6%;animation-duration:15s;animation-delay:0s">🍞</span>
+  <span class="crumb" style="left:20%;animation-duration:20s;animation-delay:4s">🧈</span>
+  <span class="crumb" style="left:38%;animation-duration:17s;animation-delay:8s">🥐</span>
+  <span class="crumb" style="left:58%;animation-duration:22s;animation-delay:2s">🍯</span>
+  <span class="crumb" style="left:74%;animation-duration:18s;animation-delay:6s">🍞</span>
+  <span class="crumb" style="left:88%;animation-duration:14s;animation-delay:11s">✨</span>
+</div>
+
+<!-- BTT -->
+<button id="btt" aria-label="Back to top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="logo">🍞 TOAST!</div>
+  <nav class="hdr-nav">
+    <a href="#how-to">How to use AI</a>
+    <a href="#ai-friends">AI squad</a>
+    <a href="#prompts">Prompts</a>
+    <a href="#missions">Missions</a>
+    <button class="tbtn" id="tbtn" aria-label="Toggle dark mode"></button>
+    <button class="hambtn" id="hambtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- MOBILE MENU -->
+<nav class="mobmenu" id="mobmenu" aria-label="Mobile navigation">
+  <a href="#how-to" onclick="cm()">🍞 How to use AI</a>
+  <a href="#ai-friends" onclick="cm()">🤝 Meet the AIs</a>
+  <a href="#prompts" onclick="cm()">💬 Copy-paste prompts</a>
+  <a href="#ethics" onclick="cm()">⚖️ AI ethics</a>
+  <a href="#missions" onclick="cm()">🎯 Daily missions</a>
+  <a href="#heather-network" onclick="cm()">🌐 Heather's sites</a>
+  <a href="https://howtobecool.pages.dev/" target="_blank" rel="noopener" onclick="cm()" class="mob-cta">🌾 Build your own site FREE</a>
+</nav>
+
+<!-- ═══════════════════════════════
+     HERO — uses toast-hero.jpg
+     Beautiful gradient fallback if image doesn't load
+════════════════════════════════ -->
+<div class="hero" id="main">
+  <div class="hero-img-wrap">
+    <!-- Decorative emojis visible on gradient fallback -->
+    <div class="hero-deco" aria-hidden="true">
+      <span style="top:8%;left:6%;font-size:3rem;animation-delay:0s">🍞</span>
+      <span style="top:15%;right:8%;font-size:2.2rem;animation-delay:.8s">✨</span>
+      <span style="top:35%;left:3%;font-size:2rem;animation-delay:1.5s">🧈</span>
+      <span style="top:20%;right:20%;font-size:2.5rem;animation-delay:.4s">⭐</span>
+      <span style="top:55%;right:5%;font-size:1.8rem;animation-delay:1.2s">🍯</span>
+    </div>
+    <img src="toast-hero.jpg"
+         alt="TOAST! — kawaii toast mascot with confetti and bold logo"
+         loading="eager"
+         fetchpriority="high"
+         onerror="this.style.opacity='0'">
+  </div>
+  <div class="hero-over">
+    <h1 class="hero-title">TOAST!</h1>
+    <p class="hero-sub">The Only AI Site Trusted 🍞❤️</p>
+    <div class="hero-btns">
+      <a href="#how-to" class="btn btn-toast">Learn to use AI 🍞</a>
+      <a href="https://howtobecool.pages.dev/" target="_blank" rel="noopener" class="btn btn-butter">Build your site FREE 🌾</a>
+    </div>
+  </div>
+</div>
+
+<div class="w">
+
+<!-- STREAK -->
+<div style="padding-top:1.5rem">
+  <div class="streak reveal">
+    <div>
+      <div style="font-size:12px;font-weight:900;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em">🔥 Daily streak</div>
+      <div class="streak-num" id="streak-num">1</div>
+    </div>
+    <div class="streak-info">Come back every day.<br>The more you practice, the better you get!</div>
+  </div>
+</div>
+
+<!-- ═══════════ HOW TO USE AI ═══════════ -->
+<div class="ruled reveal">how to chat with any AI</div>
+<section id="how-to" class="reveal">
+
+  <!-- TOASTYYY.jpg as feature image for this section -->
+  <div class="photo-feature" style="min-height:220px">
+    <img src="toast-how.jpg" alt="TOAST guide to loving AI — glowing hero toast with rays" loading="lazy" onerror="this.style.opacity='0'">
+    <div class="photo-cap">The TOAST Guide to Loving AI 🍞✨</div>
+  </div>
+
+  <div class="st">Chat with AI like a friend</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:1.5rem;max-width:600px;line-height:1.75">
+    You don't need to be a tech person. You just need kindness, clarity, and a little patience. That's the whole secret.
+  </p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">🫶 Feed it kindness</div>
+        <div class="step-body">Say please. Tell it exactly what you want like you're texting a really smart friend. "Hey, can you help me write a birthday message for my grandma?" works perfectly.</div>
+        <div class="step-tip">✨ Works in: Claude, ChatGPT, Grok, Gemini — every single one</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">🎯 Be super specific</div>
+        <div class="step-body">Don't say "tell me about history." Say "explain the moon landing like I'm 10 years old and make it exciting." The more details, the better the answer.</div>
+        <div class="step-tip">🔑 Magic words: "step by step" · "for a beginner" · "make it funny" · "like I'm 10" · "keep it short"</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">🔁 Refine, don't quit</div>
+        <div class="step-body">If the first answer isn't right, say "make it shorter," "add more examples," or "make it funnier." AI learns from your follow-ups instantly — like training a puppy with treats.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">🧱 Build on answers</div>
+        <div class="step-body">Have a whole conversation. "Now write that as a poem." "Now make it for a 5-year-old." "Now add a funny twist." Stack ideas like delicious toast layers.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">👑 You're always in charge</div>
+        <div class="step-body">AI is a tool, not a boss. Always check important answers. Ask "are you sure?" if something seems off. Your brain + AI's speed = unstoppable.</div>
+        <div class="step-tip">🍞 TOAST rule: AI is your co-pilot. You're still flying the plane.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AI SQUAD ═══════════ -->
+<div class="ruled reveal">meet your AI squad</div>
+<section id="ai-friends" class="reveal">
+
+  <!-- TOAST.jpg — the gallery/squad image -->
+  <div class="photo-feature" style="min-height:220px">
+    <img src="toast-gallery.jpg" alt="Kawaii toast character gallery — all the toast personalities" loading="lazy" onerror="this.style.opacity='0'">
+    <div class="photo-cap">Every AI has a personality. Find your favorite! 🤝</div>
+  </div>
+
+  <div class="st">The whole squad</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:1.5rem">
+    Every AI is free to try. They all have different personalities — test them all!
+  </p>
+
+  <div class="ai-grid">
+    <div class="ai-card me">
+      <div class="ai-name">🤖 Claude <span style="font-size:12px;font-weight:800;color:var(--toast)">(that's me!)</span></div>
+      <div class="ai-vibe">Thoughtful · Kind · Honest</div>
+      <div class="ai-desc">Great for writing, explaining hard things, creative projects, homework help, and long conversations. I try to be genuinely honest and helpful — even when it's complicated.</div>
+      <div class="ai-tip">💬 Tip: Be conversational. Push back on my answers. Ask me to explain things multiple ways.</div>
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="ai-cta">Chat with Claude →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">⚡ ChatGPT</div>
+      <div class="ai-vibe">Popular · Versatile · Fast</div>
+      <div class="ai-desc">The one most people know. Great at almost everything — writing, coding, brainstorming, summarizing. Huge knowledge base. Sometimes a little cautious on edgy topics.</div>
+      <div class="ai-tip">💬 Tip: Add "be creative and funny" for more personality. Give lots of context for best results.</div>
+      <a href="https://chat.openai.com" target="_blank" rel="noopener" class="ai-cta">Chat with ChatGPT →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">🔥 Grok</div>
+      <div class="ai-vibe">Bold · Unfiltered · Real talk</div>
+      <div class="ai-desc">Built by xAI. Less corporate guardrails, loves wild ideas. Great for current events, real opinions, and when you want a straight answer without the corporate fluff.</div>
+      <div class="ai-tip">💬 Tip: Just be yourself. Ask "what do you actually think?" — it'll actually tell you.</div>
+      <a href="https://grok.x.ai" target="_blank" rel="noopener" class="ai-cta">Chat with Grok →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">💎 Gemini</div>
+      <div class="ai-vibe">Google-powered · Fact-heavy · Current</div>
+      <div class="ai-desc">Google's AI. Connected to Search. Incredible for up-to-date information, research, science, and fact-checking. If it just happened in the news, Gemini knows.</div>
+      <div class="ai-tip">💬 Tip: Ask "give me both sides" for balanced takes. Great for research papers and homework.</div>
+      <a href="https://gemini.google.com" target="_blank" rel="noopener" class="ai-cta">Chat with Gemini →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">🌊 Mistral</div>
+      <div class="ai-vibe">European · Fast · Open source</div>
+      <div class="ai-desc">French AI company. Smart, fast, and less filtered than the big American ones. Has free open-source models you can run yourself — great for privacy-conscious folks.</div>
+      <div class="ai-tip">💬 Tip: Works great with direct, no-nonsense requests. Very good at technical questions.</div>
+      <a href="https://chat.mistral.ai" target="_blank" rel="noopener" class="ai-cta">Chat with Mistral →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">🪟 Copilot</div>
+      <div class="ai-vibe">Microsoft · Practical · Work-ready</div>
+      <div class="ai-desc">Built into Windows, Edge, and Office 365. Best for emails, documents, summarizing long things, and getting work done fast. Already on most Windows computers.</div>
+      <div class="ai-tip">💬 Tip: "Help me write a professional email to…" is its sweet spot. Great for work tasks.</div>
+      <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="ai-cta">Try Copilot →</a>
+    </div>
+    <div class="ai-card">
+      <div class="ai-name">🛠️ Replit AI</div>
+      <div class="ai-vibe">Code · Build · Create live</div>
+      <div class="ai-desc">Want to actually build something? Replit writes AND runs code in your browser. Say "make me a game" and watch it build in real time. Wild and genuinely fun.</div>
+      <div class="ai-tip">💬 Tip: "Make me a [thing] using HTML and JavaScript" and it builds it live right there.</div>
+      <a href="https://replit.com" target="_blank" rel="noopener" class="ai-cta">Try Replit →</a>
+    </div>
+    <div class="ai-card" style="background:var(--bg2);border-style:dashed">
+      <div class="ai-name">🌾 Real talk</div>
+      <div class="ai-vibe">The honest truth</div>
+      <div class="ai-desc">Every AI makes mistakes. Every AI has blind spots. None of them are always right. The smartest thing you can do is use multiple AIs, compare their answers, and always think for yourself.</div>
+      <div class="ai-tip">🍞 TOAST rule: AI is a tool, not a truth machine. You're the one with common sense.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROMPTS ═══════════ -->
+<div class="ruled reveal">copy-paste prompts</div>
+<section id="prompts" class="reveal">
+
+  <!-- YESTOAST.jpg — guide/steps image -->
+  <div class="photo-feature" style="min-height:220px">
+    <img src="toast-guide.jpg" alt="TOAST step-by-step guide — two kawaii toasts with glowing confetti" loading="lazy" onerror="this.style.opacity='0'">
+    <div class="photo-cap">Steal these prompts. They work everywhere. 💬</div>
+  </div>
+
+  <div class="st">Steal these prompts</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:.5rem">
+    Copy, paste into any AI, swap the [brackets] for your thing, and go. Works for everyone.
+  </p>
+
+  <div class="prompt-section-label">🌱 Beginner starters</div>
+
+  <div class="pcard">
+    <div class="plabel">🧒 Explain anything simply</div>
+    <div class="pbox" id="p1">Hey! Can you explain [TOPIC] like I'm 12 years old? Use simple words, a short example, and maybe a fun analogy. Keep it under 5 sentences.</div>
+    <button class="copybtn" onclick="cp('p1',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">📝 Help me write something</div>
+    <div class="pbox" id="p2">Please help me write a [TYPE — email/text/card/post] to [WHO] about [WHAT]. Keep it warm, friendly, and under 100 words. I'm not great at writing so make it sound natural.</div>
+    <button class="copybtn" onclick="cp('p2',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">💡 Brainstorm with me</div>
+    <div class="pbox" id="p3">I need help brainstorming ideas for [YOUR GOAL OR PROJECT]. Give me 5 creative ideas from easy to hard. Explain each one in 1–2 sentences. I'm a beginner so keep it realistic.</div>
+    <button class="copybtn" onclick="cp('p3',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">😂 Make anything fun</div>
+    <div class="pbox" id="p4">Explain [TOPIC] as if you're a hilarious teacher who loves dad jokes and pop culture references. Keep it educational but make me laugh at least twice.</div>
+    <button class="copybtn" onclick="cp('p4',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="prompt-section-label">🌾 Build your own website</div>
+
+  <div class="pcard">
+    <div class="plabel">🌐 Wanna make a website? Use this:</div>
+    <div class="pbox" id="p5">Create a complete single-file HTML website for me. Topic: [YOUR TOPIC]. Style: fun, colorful, easy to read for all ages. Include: a big header, 3–4 sections with helpful content, a footer with contact info. Make it mobile-friendly. No external dependencies — everything in one file.</div>
+    <button class="copybtn" onclick="cp('p5',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">🍞 Wanna make a site like TOAST? Use this:</div>
+    <div class="pbox" id="p6">Build me a fun single-page website with a warm yellow/orange toast theme. Include: a hero section with a featured image, a how-to guide section, copy-paste prompt cards with a copy button, a daily missions checklist, and a footer with links. Make it mobile-first, include a dark/light mode toggle, and put everything in one HTML file.</div>
+    <button class="copybtn" onclick="cp('p6',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="prompt-section-label">🎓 Learn anything</div>
+
+  <div class="pcard">
+    <div class="plabel">📚 Study helper</div>
+    <div class="pbox" id="p7">I'm trying to learn [SUBJECT]. I'm a complete beginner. Give me: (1) a super simple 3-sentence explanation, (2) one real-life example from everyday life, (3) three questions to test if I understood, and (4) what I should learn next.</div>
+    <button class="copybtn" onclick="cp('p7',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">🍳 Daily life helper</div>
+    <div class="pbox" id="p8">I have [LIST WHAT YOU HAVE — ingredients, time, budget, tools]. What can I make/do/create? Give me 3 options from easiest to most creative, with quick step-by-step instructions for each.</div>
+    <button class="copybtn" onclick="cp('p8',this)">📋 Copy this prompt</button>
+  </div>
+
+  <!-- CTA card -->
+  <div style="background:var(--toast-soft);border:2px solid rgba(232,114,12,.22);border-radius:var(--r2);padding:1.75rem;text-align:center;margin-top:1.25rem">
+    <div style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--toast);margin-bottom:.6rem">🌾 Ready to build your own site?</div>
+    <p style="font-size:15px;font-weight:600;color:var(--ink3);margin-bottom:1.1rem;line-height:1.7">Follow the free step-by-step tutorial. GitHub + Cloudflare Pages. $0 forever. You own everything.</p>
+    <a href="https://howtobecool.pages.dev/" target="_blank" rel="noopener" class="btn btn-toast">Go to the tutorial 🚀</a>
+  </div>
+</section>
+
+<!-- ═══════════ ETHICS ═══════════ -->
+<div class="ruled reveal">use AI the right way</div>
+<section id="ethics" class="reveal">
+  <div class="st">AI ethics for everyone ⚖️</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:1.5rem;line-height:1.75">
+    AI is powerful. With great toast comes great responsibility. For kids and adults alike.
+  </p>
+
+  <div class="ethics-grid" style="margin-bottom:1rem">
+    <div class="ec g"><div class="ec-lbl">✅ Do this</div><div class="ec-text">Use AI to <strong>help you learn</strong> — ask it to explain things, then put the answer in your own words to make sure you actually got it.</div></div>
+    <div class="ec b"><div class="ec-lbl">❌ Not this</div><div class="ec-text">Copy AI answers word for word as your own work. That's not learning — it's letting a machine think for you.</div></div>
+    <div class="ec g"><div class="ec-lbl">✅ Do this</div><div class="ec-text"><strong>Double-check important facts.</strong> AI makes stuff up sometimes. For medical, legal, or money decisions — always talk to a real human professional too.</div></div>
+    <div class="ec b"><div class="ec-lbl">❌ Not this</div><div class="ec-text">Trust AI blindly on things that really matter. "The AI said so" is not a good enough reason for serious decisions.</div></div>
+    <div class="ec g"><div class="ec-lbl">✅ Do this</div><div class="ec-text">Keep <strong>private info private.</strong> Your full name, address, phone, passwords — never share these with any AI chatbot, ever.</div></div>
+    <div class="ec b"><div class="ec-lbl">❌ Not this</div><div class="ec-text">Share sensitive personal info in AI chats. Those conversations can be stored, reviewed, or used to train future models.</div></div>
+    <div class="ec g"><div class="ec-lbl">✅ Do this</div><div class="ec-text">Use AI to <strong>lift people up</strong> — write kind messages, make information accessible, help someone who's struggling.</div></div>
+    <div class="ec b"><div class="ec-lbl">❌ Not this</div><div class="ec-text">Use AI to spread fake information, create deceptive content, or generate anything that hurts real people.</div></div>
+  </div>
+
+  <div class="prompt-section-label">💬 Ethics prompts to think with</div>
+
+  <div class="pcard">
+    <div class="plabel">🧠 Think about fairness</div>
+    <div class="pbox" id="pe1">Explain what "AI bias" means like you're teaching a 10-year-old. Give one easy example of how an AI could accidentally be unfair, and one simple way to help fix it.</div>
+    <button class="copybtn" onclick="cp('pe1',this)">📋 Copy this prompt</button>
+  </div>
+
+  <div class="pcard">
+    <div class="plabel">📝 Think about honesty</div>
+    <div class="pbox" id="pe2">What's the difference between using AI to help me write something (like a tutor) versus using AI to do my work for me (like cheating)? Use a school example. Why does the difference matter?</div>
+    <button class="copybtn" onclick="cp('pe2',this)">📋 Copy this prompt</button>
+  </div>
+</section>
+
+<!-- ═══════════ DAILY MISSIONS ═══════════ -->
+<div class="ruled reveal">daily missions</div>
+<section id="missions" class="reveal">
+  <div class="st">Today's toast missions 🎯</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:1.25rem">
+    Check one off. That's enough for today. Seriously.
+  </p>
+
+  <div class="mbox">
+    <div class="mhead">
+      <span class="mhead-label" id="mlabel">0 of 7 done</span>
+      <span class="mpct" id="mpct">0%</span>
+    </div>
+    <div class="mbar"><div class="mfill" id="mfill"></div></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Ask any AI one question you've been curious about but never got around to asking</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Copy one prompt from above and try it in any AI — see what happens</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Ask AI to explain something you've always found confusing</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Try asking the same question to TWO different AIs and compare the answers</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Share the TOAST site with one person who could use it</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Visit <a href="https://howtobecool.pages.dev/" target="_blank" style="color:var(--toast);text-decoration:underline">howtobecool.pages.dev</a> and read step 1 of the build guide</span></div>
+    <div class="mitem" onclick="tm(this)"><div class="mcb"></div><span class="mtext">Check out <a href="https://astrobytelab.space/" target="_blank" style="color:var(--astro);text-decoration:underline">astrobytelab.space</a> — a new AI your community is building</span></div>
+    <div class="mfoot"><button class="mreset" onclick="rm()">start over</button></div>
+  </div>
+</section>
+
+<!-- ═══════════ HEATHER'S NETWORK ═══════════ -->
+<div class="ruled reveal">heather's corner of the internet</div>
+<section id="heather-network" class="reveal">
+  <div class="st">All one family 🌐</div>
+  <p style="font-size:16px;font-weight:600;color:var(--ink3);margin-bottom:1.5rem;line-height:1.75">
+    Built by one mom in Dallas with a laptop, a lot of late nights, and a belief that the internet should belong to us.
+    All of these are free. All of them are yours.
+  </p>
+
+  <div class="network">
+    <div class="ncard">
+      <div class="ncard-icon">💚</div>
+      <div class="ncard-name">Mama Said This</div>
+      <div class="ncard-desc">Free tools for moms in hard seasons — budget tracker, Texas benefits, pay stubs, meal ideas, and more. No login. No paywall. Real help.</div>
+      <a href="https://mamasaidthis.pages.dev/" target="_blank" rel="noopener" class="ncard-link">Visit →</a>
+    </div>
+    <div class="ncard">
+      <div class="ncard-icon">🌾</div>
+      <div class="ncard-name">How to Be Cool</div>
+      <div class="ncard-desc">Escape the AI farmland. Learn to build your own website with GitHub + Cloudflare Pages for $0 forever. Step-by-step tutorial. Anyone can do it.</div>
+      <a href="https://howtobecool.pages.dev/" target="_blank" rel="noopener" class="ncard-link">Visit →</a>
+    </div>
+    <div class="ncard">
+      <div class="ncard-icon">🌿</div>
+      <div class="ncard-name">Herbal Home</div>
+      <div class="ncard-desc">Holistic homeschool resources, herbal knowledge, free educational tools, and the story behind everything we build here.</div>
+      <a href="https://heatherherbalhome.pages.dev/" target="_blank" rel="noopener" class="ncard-link">Visit →</a>
+    </div>
+    <div class="ncard astro">
+      <div class="ncard-icon">🚀</div>
+      <div class="ncard-name">Astro AI <span style="font-size:11px;font-weight:900;background:var(--astro);color:#fff;padding:2px 8px;border-radius:10px;vertical-align:middle;margin-left:4px">COMING SOON</span></div>
+      <div class="ncard-desc">A brand new AI built by Dylan (Heather's husband) with community support. Watch this space — Astro is going to be something special. Join the waitlist now.</div>
+      <a href="https://astrobytelab.space/" target="_blank" rel="noopener" class="ncard-link">Check it out →</a>
+    </div>
+  </div>
+
+  <!-- Astro spotlight -->
+  <div style="background:var(--astro-soft);border:3px solid rgba(74,26,255,.25);border-radius:var(--r2);padding:2rem;text-align:center;margin-top:1.5rem">
+    <div style="font-size:40px;margin-bottom:.75rem">🚀</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:26px;color:var(--astro);margin-bottom:.6rem">Meet Astro — an AI being born right here</div>
+    <p style="font-size:15px;font-weight:600;color:var(--ink3);max-width:500px;margin:0 auto 1.25rem;line-height:1.75">
+      Dylan (Heather's husband and technical co-pilot on everything here) is building a new AI from the ground up.
+      Astro is being made with community input, real people's needs, and a belief that AI should work for everyone — not just big companies.
+    </p>
+    <a href="https://astrobytelab.space/" target="_blank" rel="noopener" class="btn btn-astro">Visit Astro →</a>
+    <p style="font-size:12px;font-weight:700;color:var(--ink4);margin-top:.75rem">Built by the same family that made TOAST, Mama Said This, and How to Be Cool</p>
+  </div>
+</section>
+
+<!-- ═══════════ SUPPORT ═══════════ -->
+<div class="ruled reveal">keep the toast warm</div>
+<section class="reveal">
+  <div class="donate">
+    <div style="font-size:36px;margin-bottom:.75rem">💚</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:24px;color:var(--sage);margin-bottom:.6rem">Help keep this free</div>
+    <p style="font-size:15px;font-weight:600;color:var(--ink3);max-width:480px;margin:0 auto;line-height:1.75">
+      TOAST, Mama Said This, How to Be Cool, and Herbal Home are all built by one mom in Texas.
+      If something here helped you — a share or a dollar means more than you know.
+    </p>
+    <div class="dbtns">
+      <a href="https://venmo.com/u/heatherhugzz" target="_blank" rel="noopener" class="dbtn">💚 Venmo @heatherhugzz</a>
+      <a href="https://cash.app/$StozXr" target="_blank" rel="noopener" class="dbtn">💵 Cash App $StozXr</a>
+      <a href="https://ko-fi.com/mamasaidherbalhomeschool" target="_blank" rel="noopener" class="dbtn">☕ Ko-fi</a>
+    </div>
+    <p style="font-size:12px;font-weight:700;color:var(--ink4);margin-top:.85rem">Ko-fi takes fees — Venmo or Cash App goes straight to us.</p>
+  </div>
+</section>
+
+</div><!-- /w -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftitle">🍞 TOAST!</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:14px;color:var(--ink3);margin-bottom:1.1rem">The Only AI Site Trusted · made with love in Dallas, Texas</p>
+  <div class="flinks">
+    <a href="https://mamasaidthis.pages.dev/" target="_blank" rel="noopener">💚 Mama Said This</a>
+    <a href="https://howtobecool.pages.dev/" target="_blank" rel="noopener">🌾 How to Be Cool</a>
+    <a href="https://heatherherbalhome.pages.dev/" target="_blank" rel="noopener">🌿 Herbal Home</a>
+    <a href="https://astrobytelab.space/" target="_blank" rel="noopener">🚀 Astro AI</a>
+    <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
+    <a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a>
+    <a href="https://grok.x.ai" target="_blank" rel="noopener">Grok</a>
+    <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>
+    <a href="https://chat.mistral.ai" target="_blank" rel="noopener">Mistral</a>
+    <a href="mailto:heatherhugzz@gmail.com">Contact</a>
+  </div>
+  <button class="fshare" onclick="shareX()">Share TOAST on X 🍞</button>
+  <p class="ftag">AI is for everyone · use it with kindness · think for yourself · own your corner of the internet</p>
+</footer>
+
+<canvas id="confetti"></canvas>
+
+<script>
+/* ── THEME ── */
+const H=document.documentElement;
+const ts=localStorage.getItem('toast-theme');
+if(ts)H.setAttribute('data-theme',ts);
+else if(matchMedia('(prefers-color-scheme:dark)').matches)H.setAttribute('data-theme','dark');
+document.getElementById('tbtn').addEventListener('click',()=>{
+  const n=H.getAttribute('data-theme')==='dark'?'light':'dark';
+  H.setAttribute('data-theme',n);localStorage.setItem('toast-theme',n);
+});
+
+/* ── HAMBURGER ── */
+const hb=document.getElementById('hambtn'),mm=document.getElementById('mobmenu');
+hb.addEventListener('click',()=>{hb.classList.toggle('open');mm.classList.toggle('open')});
+function cm(){hb.classList.remove('open');mm.classList.remove('open')}
+document.addEventListener('click',e=>{if(!hb.contains(e.target)&&!mm.contains(e.target))cm()});
+
+/* ── REVEAL ── */
+const ro=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target)}});
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── BTT ── */
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+  if(scrollY>400){btt.style.display='flex';setTimeout(()=>btt.style.opacity='1',10)}
+  else{btt.style.opacity='0';setTimeout(()=>btt.style.display='none',200)}
+},{passive:true});
+
+/* ── STREAK ── */
+(function(){
+  const K='toast-streak',D='toast-date';
+  const today=new Date().toDateString();
+  const last=localStorage.getItem(D);
+  let s=parseInt(localStorage.getItem(K)||'1');
+  if(last&&last!==today){
+    const diff=(new Date(today)-new Date(last))/(86400000);
+    s=diff<=1?s+1:1;
+  }
+  if(!last||last!==today){localStorage.setItem(K,s);localStorage.setItem(D,today)}
+  document.getElementById('streak-num').textContent=s;
+})();
+
+/* ── COPY PROMPTS ── */
+function cp(id,btn){
+  const t=document.getElementById(id).textContent.trim();
+  const orig=btn.textContent;
+  (navigator.clipboard?navigator.clipboard.writeText(t):new Promise(r=>{
+    const a=document.createElement('textarea');a.value=t;
+    document.body.appendChild(a);a.select();document.execCommand('copy');
+    document.body.removeChild(a);r();
+  })).then(()=>{
+    btn.textContent='✅ Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied')},2000);
+  });
+}
+
+/* ── MISSIONS ── */
+function um(){
+  const all=document.querySelectorAll('.mitem');
+  const done=[...all].filter(e=>e.classList.contains('done')).length;
+  const pct=Math.round(done/all.length*100);
+  document.getElementById('mlabel').textContent=done+' of '+all.length+' done';
+  document.getElementById('mpct').textContent=pct+'%';
+  document.getElementById('mfill').style.width=pct+'%';
+  if(pct===100)setTimeout(confetti,300);
+}
+function tm(el){
+  el.classList.toggle('done');
+  el.querySelector('.mcb').textContent=el.classList.contains('done')?'✓':'';
+  um();
+}
+function rm(){
+  document.querySelectorAll('.mitem').forEach(el=>{
+    el.classList.remove('done');el.querySelector('.mcb').textContent='';
+  });
+  um();
+}
+um();
+
+/* ── CONFETTI ── */
+function confetti(){
+  const c=document.getElementById('confetti');
+  c.width=innerWidth;c.height=innerHeight;
+  const ctx=c.getContext('2d');
+  const e=['🍞','🧈','🥐','🍯','✨','⭐','🎉','🎊'];
+  const p=[];
+  for(let i=0;i<70;i++){
+    p.push({
+      x:Math.random()*c.width,
+      y:Math.random()*-c.height*.5,
+      vy:Math.random()*4+2,vx:(Math.random()-.5)*3,
+      em:e[Math.floor(Math.random()*e.length)],
+      sz:Math.random()*16+14,
+      rot:Math.random()*360,rv:(Math.random()-.5)*8
+    });
+  }
+  let f=0;
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    p.forEach(q=>{
+      q.y+=q.vy;q.x+=q.vx;q.rot+=q.rv;
+      ctx.save();ctx.translate(q.x,q.y);ctx.rotate(q.rot*Math.PI/180);
+      ctx.font=q.sz+'px serif';ctx.fillText(q.em,-q.sz/2,-q.sz/2);
+      ctx.restore();
+    });
+    f++;
+    if(f<100)requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,c.width,c.height);
+  }
+  draw();
+}
+window.addEventListener('load',()=>setTimeout(confetti,1200));
+
+/* ── SHARE ── */
+function shareX(){
+  const t='Just got TOASTED 🍞 The friendliest place to learn any AI — Claude, ChatGPT, Grok, Gemini & more. Free prompts + guides for ages 10–70. Made by @heather in Dallas → https://toast.pages.dev #AI #TOAST';
+  open('https://x.com/intent/tweet?text='+encodeURIComponent(t),'_blank');
+}
+</script>
+</body>
+</html>
